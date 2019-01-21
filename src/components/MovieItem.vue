@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="row mt-4">
-          <movie-comment />
+          <movie-comment :comment="item.comment" />
         </div>
       </div>
     </div>

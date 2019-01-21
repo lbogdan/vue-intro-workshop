@@ -23,9 +23,14 @@ export default {
   name: 'movie-comment',
   data() {
     return {
-      comment: '',
       isEditing: false,
     };
+  },
+  props: {
+    comment: {
+      type: String,
+      required: true,
+    },
   },
   computed: {
     commentWordCount() {
