@@ -22,7 +22,11 @@
             placeholder="Did you like this movie?"
             v-model="comment"
           ></textarea>
-          <div>
+          <div
+            :style="{
+              color: wordCount(comment) > 0 ? 'limegreen' : 'salmon',
+            }"
+          >
             {{ wordCount(comment) }} word{{
               wordCount(comment) !== 1 ? 's' : ''
             }}
