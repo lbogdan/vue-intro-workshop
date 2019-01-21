@@ -2,16 +2,16 @@
   <div class="card mt-4">
     <div class="card-body">
       <h5 class="card-title">
-        {{ title }} <small>({{ year }})</small>
+        {{ item.title }} <small>({{ item.year }})</small>
       </h5>
-      <h6 class="card-subtitle text-muted">{{ genre }}</h6>
+      <h6 class="card-subtitle text-muted">{{ item.genre }}</h6>
       <hr />
       <div class="row">
         <div class="col-sm-4">
-          <img :src="poster" class="img-fluid" alt="Movie poster" />
+          <img :src="item.poster" class="img-fluid" alt="Movie poster" />
         </div>
         <div class="col-sm-8">
-          <p>{{ plot }}</p>
+          <p>{{ item.plot }}</p>
         </div>
       </div>
       <div class="row mt-4">
@@ -20,15 +20,15 @@
             class="form-control"
             rows="3"
             placeholder="Did you like this movie?"
-            v-model="comment"
+            v-model="item.comment"
           ></textarea>
           <div :class="[commentWordCount > 0 ? 'text-success' : 'text-danger']">
             {{ commentWordCount }} word{{ commentWordCount !== 1 ? 's' : '' }}
           </div>
           <button
             class="btn btn-primary mt-2"
-            :disabled="comment.length === 0"
-            @click="comment = ''"
+            :disabled="item.comment.length === 0"
+            @click="item.comment = ''"
           >
             Clear comment
           </button>
@@ -43,19 +43,21 @@ export default {
   name: 'movie-item',
   data() {
     return {
-      title: 'Star Wars: The Last Jedi',
-      year: 2017,
-      genre: 'Action, Adventure, Fantasy',
-      plot:
-        'Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.',
-      poster:
-        'https://images-na.ssl-images-amazon.com/images/I/51ih4cPagFL.jpg',
-      comment: '',
+      item: {
+        title: 'Star Wars: The Last Jedi',
+        year: 2017,
+        genre: 'Action, Adventure, Fantasy',
+        plot:
+          'Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.',
+        poster:
+          'https://images-na.ssl-images-amazon.com/images/I/51ih4cPagFL.jpg',
+        comment: '',
+      },
     };
   },
   computed: {
     commentWordCount() {
-      return this.comment.split(/\s+/).filter(word => word !== '').length;
+      return this.item.comment.split(/\s+/).filter(word => word !== '').length;
     },
   },
 };
