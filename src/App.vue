@@ -1,7 +1,9 @@
 <template>
   <div id="app" class="container mb-4">
-    <movie-item :item="movie" />
-    <movie-item :item="movie2" />
+    <div class="row">
+      <movie-item :item="movie" />
+      <movie-item :item="movie2" />
+    </div>
   </div>
 </template>
 
