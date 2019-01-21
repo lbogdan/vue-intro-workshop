@@ -14,6 +14,18 @@
           <p>{{ plot }}</p>
         </div>
       </div>
+      <div class="row mt-4">
+        <div class="col-md-8 form-group mb-0">
+          <textarea
+            class="form-control"
+            rows="3"
+            placeholder="Did you like this movie?"
+          ></textarea>
+          <button class="btn btn-primary mt-2">
+            Clear comment
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
