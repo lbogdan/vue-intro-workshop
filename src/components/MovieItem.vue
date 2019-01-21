@@ -22,7 +22,11 @@
             placeholder="Did you like this movie?"
             v-model="comment"
           ></textarea>
-          <div>{{ wordCount(comment) }} words</div>
+          <div>
+            {{ wordCount(comment) }} word{{
+              wordCount(comment) !== 1 ? 's' : ''
+            }}
+          </div>
           <button
             class="btn btn-primary mt-2"
             :disabled="comment.length === 0"
