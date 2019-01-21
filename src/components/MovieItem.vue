@@ -17,23 +17,33 @@
         </div>
         <div class="row mt-4">
           <div class="col-md-8 form-group mb-0">
-            <textarea
-              class="form-control"
-              rows="3"
-              placeholder="Did you like this movie?"
-              v-model="item.comment"
-            ></textarea>
-            <div
-              :class="[commentWordCount > 0 ? 'text-success' : 'text-danger']"
-            >
-              {{ commentWordCount }} word{{ commentWordCount !== 1 ? 's' : '' }}
+            <template v-if="isEditing">
+              <textarea
+                class="form-control"
+                rows="3"
+                placeholder="Did you like this movie?"
+                v-model="item.comment"
+              ></textarea>
+              <div
+                :class="[commentWordCount > 0 ? 'text-success' : 'text-danger']"
+              >
+                {{ commentWordCount }} word{{
+                  commentWordCount !== 1 ? 's' : ''
+                }}
+              </div>
+            </template>
+            <div v-else>
+              {{
+                commentWordCount
+                  ? `Your comment: ${item.comment}`
+                  : 'No comment yet.'
+              }}
             </div>
             <button
               class="btn btn-primary mt-2"
-              :disabled="item.comment.length === 0"
-              @click="item.comment = ''"
+              @click="isEditing = !isEditing"
             >
-              Clear comment
+              {{ isEditing ? 'Save comment' : 'Edit comment' }}
             </button>
           </div>
         </div>
@@ -45,6 +55,11 @@
 <script>
 export default {
   name: 'movie-item',
+  data() {
+    return {
+      isEditing: false,
+    };
+  },
   props: {
     item: {
       type: Object,
