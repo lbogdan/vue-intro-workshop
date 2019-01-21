@@ -20,8 +20,13 @@
             class="form-control"
             rows="3"
             placeholder="Did you like this movie?"
+            v-model="comment"
           ></textarea>
-          <button class="btn btn-primary mt-2">
+          <button
+            class="btn btn-primary mt-2"
+            :disabled="comment.length === 0"
+            @click="comment = ''"
+          >
             Clear comment
           </button>
         </div>
@@ -42,6 +47,7 @@ export default {
         'Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.',
       poster:
         'https://images-na.ssl-images-amazon.com/images/I/51ih4cPagFL.jpg',
+      comment: '',
     };
   },
 };
