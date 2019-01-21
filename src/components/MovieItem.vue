@@ -24,12 +24,10 @@
           ></textarea>
           <div
             :style="{
-              color: wordCount(comment) > 0 ? 'limegreen' : 'salmon',
+              color: commentWordCount > 0 ? 'limegreen' : 'salmon',
             }"
           >
-            {{ wordCount(comment) }} word{{
-              wordCount(comment) !== 1 ? 's' : ''
-            }}
+            {{ commentWordCount }} word{{ commentWordCount !== 1 ? 's' : '' }}
           </div>
           <button
             class="btn btn-primary mt-2"
@@ -59,9 +57,9 @@ export default {
       comment: '',
     };
   },
-  methods: {
-    wordCount(str) {
-      return str.split(/\s+/).filter(word => word !== '').length;
+  computed: {
+    commentWordCount() {
+      return this.comment.split(/\s+/).filter(word => word !== '').length;
     },
   },
 };
