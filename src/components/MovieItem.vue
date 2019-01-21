@@ -22,6 +22,7 @@
             placeholder="Did you like this movie?"
             v-model="comment"
           ></textarea>
+          <div>{{ wordCount(comment) }} words</div>
           <button
             class="btn btn-primary mt-2"
             :disabled="comment.length === 0"
@@ -49,6 +50,11 @@ export default {
         'https://images-na.ssl-images-amazon.com/images/I/51ih4cPagFL.jpg',
       comment: '',
     };
+  },
+  methods: {
+    wordCount(str) {
+      return str.split(/\s+/).filter(word => word !== '').length;
+    },
   },
 };
 </script>
