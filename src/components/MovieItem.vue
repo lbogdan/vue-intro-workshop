@@ -1,11 +1,20 @@
 <template>
-  <div>
-    <h1>{{ title }} ({{ year }})</h1>
-    <h2>{{ genre }}</h2>
-    <p>
-      {{ plot }}
-    </p>
-    <img v-bind:src="poster" alt="poster" />
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">
+        {{ title }} <small>({{ year }})</small>
+      </h5>
+      <h6 class="card-subtitle text-muted">{{ genre }}</h6>
+      <hr />
+      <div class="row">
+        <div class="col-sm-4">
+          <img :src="poster" class="img-fluid" alt="Movie poster" />
+        </div>
+        <div class="col-sm-8">
+          <p>{{ plot }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
