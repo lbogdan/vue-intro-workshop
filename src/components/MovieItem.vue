@@ -16,7 +16,7 @@
           </div>
         </div>
         <div class="row mt-4">
-          <movie-comment :comment="item.comment" />
+          <movie-comment v-model="item.comment" />
         </div>
       </div>
     </div>

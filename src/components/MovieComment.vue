@@ -12,7 +12,7 @@
       </div>
     </template>
     <div v-else v-html="formattedComment" />
-    <button class="btn btn-primary mt-2" @click="isEditing = !isEditing">
+    <button class="btn btn-primary mt-2" @click="editOrSave">
       {{ isEditing ? 'Save comment' : 'Edit comment' }}
     </button>
   </div>
@@ -23,11 +23,12 @@ export default {
   name: 'movie-comment',
   data() {
     return {
+      comment: this.value,
       isEditing: false,
     };
   },
   props: {
-    comment: {
+    value: {
       type: String,
       required: true,
     },
@@ -41,6 +42,19 @@ export default {
         return 'No comment yet.';
       }
       return `Your comment: <b>${this.comment}</b>`;
+    },
+  },
+  methods: {
+    editOrSave() {
+      if (this.isEditing) {
+        this.$emit('input', this.comment); // update the v-model value in parent
+      }
+      this.isEditing = !this.isEditing;
+    },
+  },
+  watch: {
+    value(newValue) {
+      this.comment = newValue;
     },
   },
 };
