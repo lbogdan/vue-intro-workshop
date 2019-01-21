@@ -15,6 +15,13 @@
     <button class="btn btn-primary mt-2" @click="editOrSave">
       {{ isEditing ? 'Save comment' : 'Edit comment' }}
     </button>
+    <button
+      class="btn btn-outline-danger ml-2 mt-2"
+      v-if="isEditing"
+      @click="cancel"
+    >
+      Cancel editing
+    </button>
   </div>
 </template>
 
@@ -50,6 +57,10 @@ export default {
         this.$emit('input', this.comment); // update the v-model value in parent
       }
       this.isEditing = !this.isEditing;
+    },
+    cancel() {
+      this.comment = this.value;
+      this.isEditing = false;
     },
   },
   watch: {
