@@ -32,13 +32,7 @@
                 }}
               </div>
             </template>
-            <div v-else>
-              {{
-                commentWordCount
-                  ? `Your comment: ${item.comment}`
-                  : 'No comment yet.'
-              }}
-            </div>
+            <div v-else v-html="formattedComment" />
             <button
               class="btn btn-primary mt-2"
               @click="isEditing = !isEditing"
@@ -69,6 +63,12 @@ export default {
   computed: {
     commentWordCount() {
       return this.item.comment.split(/\s+/).filter(word => word !== '').length;
+    },
+    formattedComment() {
+      if (!this.commentWordCount) {
+        return 'No comment yet.';
+      }
+      return `Your comment: <b>${this.item.comment}</b>`;
     },
   },
 };
