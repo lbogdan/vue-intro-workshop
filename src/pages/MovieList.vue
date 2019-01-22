@@ -16,7 +16,7 @@ import MovieItem from '@/components/MovieItem.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
 export default {
-  name: 'movie-items',
+  name: 'movie-list-page',
   components: {
     MovieItem,
     LoadingIndicator,

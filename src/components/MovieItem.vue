@@ -2,9 +2,14 @@
   <div class="col-lg-6 px-2">
     <div class="card mt-4">
       <div class="card-body">
-        <h5 class="card-title">
-          {{ item.title }} <small>({{ item.year }})</small>
-        </h5>
+        <router-link
+          class="card-link text-dark"
+          :to="{ name: 'movie', params: { id: item.id } }"
+        >
+          <h5 class="card-title">
+            {{ item.title }} <small>({{ item.year }})</small>
+          </h5>
+        </router-link>
         <h6 class="card-subtitle text-muted">{{ item.genre }}</h6>
         <hr />
         <div class="row">
