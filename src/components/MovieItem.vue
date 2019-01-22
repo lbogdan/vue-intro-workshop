@@ -4,7 +4,7 @@
       <div class="card-body">
         <router-link
           class="card-link text-dark"
-          :to="{ name: 'movie', params: { id: item.id } }"
+          :to="{ name: 'movie', params: { id: item.id.toString() } }"
         >
           <h5 class="card-title">
             {{ item.title }} <small>({{ item.year }})</small>
