@@ -41,9 +41,40 @@ const initialMovies = [
     comment: '',
   },
 ];
+const lsKey = '_viw_movies';
+
+function lsSaveMovies(movies) {
+  localStorage.setItem(lsKey, JSON.stringify(movies));
+}
+
+function lsLoadMovies() {
+  const moviesJson = localStorage.getItem(lsKey);
+  if (!moviesJson) {
+    lsSaveMovies(initialMovies);
+    return initialMovies;
+  }
+  return JSON.parse(moviesJson);
+}
+
+function randomTimeout(cb) {
+  setTimeout(cb, 500 + 500 * Math.random());
+}
+
+let movies = lsLoadMovies();
 
 export function getMovies() {
   return new Promise(resolve => {
-    setTimeout(() => resolve(initialMovies), 500 + 500 * Math.random());
+    randomTimeout(() => resolve(movies));
+  });
+}
+
+export function saveMovie(movie) {
+  return new Promise(resolve => {
+    const index = movies.findIndex(m => m.id === movie.id);
+    if (index !== -1) {
+      movies[index] = movie;
+      lsSaveMovies(movies);
+    }
+    resolve();
   });
 }
