@@ -1,35 +1,16 @@
 <template>
   <div id="app" class="container mb-4">
-    <loading-indicator v-if="isLoading" message="Loading movies..." />
-    <div v-else class="row">
-      <movie-item v-for="movie in movies" :item="movie" :key="movie.id" />
-    </div>
+    <movie-list />
   </div>
 </template>
 
 <script>
-import { getMovies } from './api';
-import MovieItem from './components/MovieItem.vue';
-import LoadingIndicator from './components/LoadingIndicator.vue';
+import MovieList from './pages/MovieList.vue';
 
 export default {
   name: 'app',
   components: {
-    MovieItem,
-    LoadingIndicator,
-  },
-  data() {
-    return {
-      movies: [],
-      isLoading: false,
-    };
-  },
-  created() {
-    this.isLoading = true;
-    getMovies().then(movies => {
-      this.movies = movies;
-      this.isLoading = false;
-    });
+    MovieList,
   },
 };
 </script>
