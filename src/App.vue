@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import MovieList from './pages/MovieList.vue';
+import MovieList from '@/pages/MovieList.vue';
 
 export default {
   name: 'app',

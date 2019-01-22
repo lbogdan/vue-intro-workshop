@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import { getMovies } from '../api';
-import MovieItem from '../components/MovieItem.vue';
-import LoadingIndicator from '../components/LoadingIndicator.vue';
+import { getMovies } from '@/api';
+import MovieItem from '@/components/MovieItem.vue';
+import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
 export default {
   name: 'movie-items',
