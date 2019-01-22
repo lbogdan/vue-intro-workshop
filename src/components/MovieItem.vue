@@ -37,5 +37,13 @@ export default {
       required: true,
     },
   },
+  watch: {
+    item: {
+      handler(newValue) {
+        this.$emit('change', newValue);
+      },
+      deep: true,
+    },
+  },
 };
 </script>
