@@ -14,7 +14,11 @@
         <hr />
         <div class="row">
           <div class="col-sm-4">
-            <img :src="item.poster" class="img-fluid" alt="Movie poster" />
+            <router-link
+              :to="{ name: 'movie', params: { id: item.id.toString() } }"
+            >
+              <img :src="item.poster" class="img-fluid" alt="Movie poster" />
+            </router-link>
           </div>
           <div class="col-sm-8">
             <p>{{ item.plot }}</p>
