@@ -44,6 +44,7 @@ const initialMovies = [
   },
 ];
 const lsKey = '_viw_movies';
+const disableDelay = false;
 
 function lsSaveMovies(movies) {
   localStorage.setItem(lsKey, JSON.stringify(movies));
@@ -58,21 +59,25 @@ function lsLoadMovies() {
   return JSON.parse(moviesJson);
 }
 
-function randomTimeout(cb) {
-  setTimeout(cb, 500 + 500 * Math.random());
+function randomDelay(cb) {
+  if (!disableDelay) {
+    setTimeout(cb, 500 + 500 * Math.random());
+  } else {
+    cb();
+  }
 }
 
 let movies = lsLoadMovies();
 
 export function getMovies() {
   return new Promise(resolve => {
-    randomTimeout(() => resolve(clone(movies)));
+    randomDelay(() => resolve(clone(movies)));
   });
 }
 
 export function saveMovie(movie) {
   return new Promise(resolve => {
-    randomTimeout(() => {
+    randomDelay(() => {
       const index = movies.findIndex(m => m.id === movie.id);
       if (index !== -1) {
         movies[index] = clone(movie);
@@ -85,7 +90,7 @@ export function saveMovie(movie) {
 
 export function getMovie(id) {
   return new Promise(resolve => {
-    randomTimeout(() => {
+    randomDelay(() => {
       const movie = movies.find(m => m.id === id);
       resolve(clone(movie));
     });
