@@ -1,3 +1,5 @@
+import clone from 'clone';
+
 const initialMovies = [
   {
     id: 1,
@@ -64,17 +66,28 @@ let movies = lsLoadMovies();
 
 export function getMovies() {
   return new Promise(resolve => {
-    randomTimeout(() => resolve(movies));
+    randomTimeout(() => resolve(clone(movies)));
   });
 }
 
 export function saveMovie(movie) {
   return new Promise(resolve => {
-    const index = movies.findIndex(m => m.id === movie.id);
-    if (index !== -1) {
-      movies[index] = movie;
-      lsSaveMovies(movies);
-    }
-    resolve();
+    randomTimeout(() => {
+      const index = movies.findIndex(m => m.id === movie.id);
+      if (index !== -1) {
+        movies[index] = clone(movie);
+        lsSaveMovies(movies);
+      }
+      resolve();
+    });
+  });
+}
+
+export function getMovie(id) {
+  return new Promise(resolve => {
+    randomTimeout(() => {
+      const movie = movies.find(m => m.id === id);
+      resolve(clone(movie));
+    });
   });
 }
