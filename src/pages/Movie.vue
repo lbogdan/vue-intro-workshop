@@ -54,7 +54,6 @@
 </template>
 
 <script>
-import { getMovie, saveMovie } from '@/api-rest';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
 export default {
@@ -62,33 +61,34 @@ export default {
   components: {
     LoadingIndicator,
   },
-  data() {
-    return {
-      movie: null,
-      isLoading: false,
-      isSaving: false,
-    };
-  },
   props: {
     id: {
       type: String,
       required: true,
     },
   },
+  computed: {
+    movie() {
+      return this.$store.getters.movie(parseInt(this.id));
+    },
+    isLoading() {
+      return this.$store.getters.isLoading;
+    },
+    isSaving() {
+      return this.$store.getters.isSaving;
+    },
+  },
   created() {
-    this.isLoading = true;
-    getMovie(parseInt(this.id)).then(movie => {
-      this.movie = movie;
-      this.isLoading = false;
-    });
+    this.$store.dispatch('loadMovies');
   },
   methods: {
     cancel() {
       this.$router.push({ name: 'home' });
     },
     save() {
-      this.isSaving = true;
-      saveMovie(this.movie).then(() => this.$router.push({ name: 'home' }));
+      this.$store
+        .dispatch('saveMovie', this.movie)
+        .then(() => this.$router.push({ name: 'home' }));
     },
   },
 };

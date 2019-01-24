@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { saveMovie } from '@/api-rest';
 import MovieItem from '@/components/MovieItem.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
@@ -34,7 +33,7 @@ export default {
   },
   methods: {
     onChange(movie) {
-      saveMovie(movie);
+      this.$store.dispatch('saveMovie', movie);
     },
   },
 };
