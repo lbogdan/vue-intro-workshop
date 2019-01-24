@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000/',
+  baseURL:
+    window.location.host.indexOf('codesandbox') === -1
+      ? 'http://localhost:8000/'
+      : 'https://lpykmjrl9l.sse.codesandbox.io/',
 });
 
 export function getMovies() {
