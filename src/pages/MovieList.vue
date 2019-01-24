@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { getMovies, saveMovie } from '@/api-rest';
+import { saveMovie } from '@/api-rest';
 import MovieItem from '@/components/MovieItem.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
@@ -21,18 +21,16 @@ export default {
     MovieItem,
     LoadingIndicator,
   },
-  data() {
-    return {
-      movies: [],
-      isLoading: false,
-    };
+  computed: {
+    movies() {
+      return this.$store.getters.movies;
+    },
+    isLoading() {
+      return this.$store.getters.isLoading;
+    },
   },
   created() {
-    this.isLoading = true;
-    getMovies().then(movies => {
-      this.movies = movies;
-      this.isLoading = false;
-    });
+    this.$store.dispatch('loadMovies');
   },
   methods: {
     onChange(movie) {
