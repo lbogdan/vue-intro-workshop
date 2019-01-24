@@ -27,7 +27,10 @@ export default new Vuex.Store({
     },
   },
   actions: {
-    loadMovies({ commit }) {
+    loadMovies({ commit, state }) {
+      if (state.movies.length > 0) {
+        return Promise.resolve();
+      }
       commit('updateLoading', true);
       return getMovies().then(movies => {
         commit('updateMovies', movies);
