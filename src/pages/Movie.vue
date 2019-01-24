@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { getMovie, saveMovie } from '@/api';
+import { getMovie, saveMovie } from '@/api-rest';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
 export default {

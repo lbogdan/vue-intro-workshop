@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { getMovies, saveMovie } from '@/api';
+import { getMovies, saveMovie } from '@/api-rest';
 import MovieItem from '@/components/MovieItem.vue';
 import LoadingIndicator from '@/components/LoadingIndicator.vue';
 
