@@ -1,8 +1,9 @@
 import axios from 'axios';
 
+const { host } = window.location;
 const api = axios.create({
   baseURL:
-    window.location.host.indexOf('codesandbox') === -1
+    host.indexOf('codesandbox.io') === -1 && host.indexOf('csb.app') === -1
       ? 'http://localhost:8000/'
       : 'https://lpykmjrl9l.sse.codesandbox.io/',
 });
