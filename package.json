@@ -2,42 +2,29 @@
   "name": "vue-intro-workshop",
   "version": "0.1.0",
   "private": true,
-  "main": "src/main.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "vue": "^2.5.21"
+    "axios": "^0.19.1",
+    "bootstrap": "^4.4.1",
+    "core-js": "^3.4.4",
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.5",
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.3.0",
-    "@vue/cli-plugin-eslint": "^3.3.0",
-    "@vue/cli-service": "^3.3.0",
-    "@vue/eslint-config-prettier": "^4.0.1",
-    "axios": "^0.18.0",
-    "babel-eslint": "^10.0.1",
-    "bootstrap": "^4.2.1",
-    "clone": "^2.1.2",
-    "eslint": "^5.8.0",
+    "@vue/cli-plugin-babel": "^4.1.0",
+    "@vue/cli-plugin-eslint": "^4.1.0",
+    "@vue/cli-service": "^4.1.0",
+    "@vue/eslint-config-prettier": "^5.0.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^5.0.0",
-    "lint-staged": "^8.1.0",
-    "vue-router": "^3.0.2",
-    "vue-template-compiler": "^2.5.21",
-    "vuex": "^3.1.0"
-  },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.js": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ]
+    "prettier": "^1.19.1",
+    "vue-template-compiler": "^2.6.10"
   }
 }
